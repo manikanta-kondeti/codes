@@ -25,5 +25,12 @@ Each cluster is an object with methods:
 	* number of data points(n), number of clusters(k)
 	* Followed by (x,y) coordinates for n points.
 
+
+## Motivation
+
+* The reason behind implementing this has a solid background idea. The heart of that idea is clustering the graph. So I just wanted to implement it and try if I can cut it down.
+* I strongly believe "Its better to do well than to say well"
+
+
 ## License 
-Released under MIT-X license. Feel free to get in touch with me if you have any doubts or want to give me some suggestions.
+Released under MIT-X license. Feel free to get in touch with me if you have any doubts or want to give me some suggestions
