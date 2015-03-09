@@ -25,4 +25,4 @@ cat results
 	* Followed by (x,y) coordinates for n points.
 
 ## License 
-Released under MIT-X license. Feel free to contact if you have some doubts or want to give suggestions 
+Released under MIT-X license. Feel free to get in touch with me if you have any doubts or want to give me some suggestions.
