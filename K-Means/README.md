@@ -16,9 +16,10 @@ Each cluster is an object with methods:
 	* printCluster 
 
 ## How to run?
-
-chmod +x run.sh
-cat results 
+* git clone https://github.com/manikanta-kondeti/codes
+* cd codes/K-Means 
+* chmod +x run.sh
+* cat results 
   * 'in' file has the input.
   	* First line: test cases 
 	* number of data points(n), number of clusters(k)
