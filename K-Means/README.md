@@ -30,6 +30,7 @@ Each cluster is an object with methods:
 
 * The reason behind implementing this has a solid background idea. The heart of that idea is clustering the graph. So I just wanted to implement it and try if I can cut it down.
 * I strongly believe "Its better to do well than to say well"
+* Ref: http://algo2.iti.kit.edu/documents/MaueSandersMatijevic2009.pdf
 
 
 ## License 
