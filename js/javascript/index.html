@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> Events Listeners </title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+	<script type="text/javascript">
+		var canvasElement, canvas,
+			flag = false,
+	    	prevX = 0,
+	    	currX = 0,
+	    	prevY = 0,
+	    	currY = 0,
+	    	dot_flag = false,
+	    	x = "#ff8000",
+	    	y = 2;
+	    const w,h;
+		function init(){
+			canvasElement = document.getElementById('canvas');
+			w = canvasElement.width;
+    		h = canvasElement.height;
+			canvas = canvasElement.getContext("2d");
+			/**
+			 * Fill canvas with colors 
+			 */
+			canvas.rect(0,0,500,250);
+			canvas.fillStyle="#001234";
+			canvas.fill();
+			/**
+			 * Adding event handlers 
+			 */
+			canvasElement.addEventListener("mousedown", function(e) {
+				MouseEvents('down',e)
+			}, false);
+			canvasElement.addEventListener("mouseup", function(e) {
+				MouseEvents('up',e)
+			}, false);
+			canvasElement.addEventListener("mousemove", function(e) {
+				MouseEvents('move',e)
+			}, false);
+			save();
+		}
+		function erase(){
+			canvas.clearRect(0,0,w,h);
+			init();
+		}
+		function download(){
+			var image = document.getElementById('canvasAfterDraw').src;
+			var a = document.getElementById('download_link');
+			a.href = image;
+		}		
+		function draw(){
+		    canvas.beginPath();
+		    canvas.moveTo(prevX, prevY);
+		    canvas.lineTo(currX, currY);
+		    canvas.strokeStyle = x;
+		    canvas.lineWidth = y;
+		    canvas.stroke();
+		    canvas.closePath();
+		}
+		function save() {
+			console.log(canvasElement.toDataURL());
+ 		  	document.getElementById("canvasAfterDraw").style = "";
+    		var dataURL = canvasElement.toDataURL();
+    		document.getElementById("canvasAfterDraw").src = dataURL;
+    		
+		}
+
+		function MouseEvents(result, e) {
+			console.log("Mouse event");
+		    if (result === 'down') {
+		        prevX = currX;
+		        prevY = currY;
+		        currX = e.clientX - canvasElement.offsetLeft;
+		        currY = e.clientY - canvasElement.offsetTop;
+
+		        flag = true;
+		        dot_flag = true;
+		        if (dot_flag) {
+		            canvas.beginPath();
+		            canvas.fillStyle = x;
+		            canvas.fillRect(currX, currY, 2, 2);
+		            canvas.closePath();
+		            dot_flag = false;
+		        }
+		    }
+		    if (result === 'up' || result === "out") {
+		        flag = false;
+		        save();
+		    }
+		    if (result === 'move') {
+		        if (flag) {
+		            prevX = currX;
+		            prevY = currY;
+		            currX = e.clientX - canvasElement.offsetLeft;
+		            currY = e.clientY - canvasElement.offsetTop;
+		            draw();
+		        }
+		    }
+		}
+
+	</script>
+	<style>
+		body {
+			background-color: #00b2b3;
+			overflow:hidden;
+		}
+		.header {
+			width: auto;
+			height: 100px;
+		}
+		.middle {
+			width: auto;
+			height: 800px;
+		}
+
+		#title {
+			padding: 30px;
+		}
+		.canvas {
+			margin-left: 150px;
+			background-color: #001234;
+		}
+		.canvasAfterDraw {
+			float: right;
+			margin-right: 100px; 
+		}
+		.title2 {
+			padding: 50px;
+		}
+	</style>
+</head>
+<body onLoad=init()>
+	<div class="header" style="background-color: #00b2b3;"> 
+		<h1 id="title" align="center"> Write something </h1>
+	</div>
+	<div class="middle" style="background-color: #00cccc;">
+		<p align="center" class="title2"> 
+			<button type="button" class="btn btn-warning" onclick="erase()"> Clear </button>
+		</p>
+		<canvas id="canvas" class="canvas" width="500px" height="250px"></canvas>
+		<img id="canvasAfterDraw" class="canvasAfterDraw" width="500px" height="250px"></img>
+		<p align="center" class="title2"> 
+			<button type="button" class="btn btn-success" onclick="download()"> <a href="#" id="download_link" download="signature.jpg"> Download </a></button>
+		</p>
+	</div>
+</body>
+</html>
