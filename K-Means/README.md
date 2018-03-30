@@ -2,7 +2,7 @@
 
 ## Introduction 
 
-This is basically a sample implementation on K-Means clustering. In this algorithm we try to create K clusters from N data points. The algorithm follows in this way. Take 'K' random points and fill it in the k-clusters. Then fill remaining (n-k) points into K clusters based on eucledian distance of that point and centroid of that cluster. After filling N-points into K-clusters we try to optimize the method by taking each point in every cluster and again trying to fit in the better cluster. 
+This is basically a sample implementation of K-Means clustering. In this algorithm we try to create K clusters from N data points. The algorithm follows in this way. Take 'K' random points and fill it in the k-clusters. Then fill remaining (n-k) points into K clusters based on eucledian distance of that point and centroid of that cluster. After filling N-points into K-clusters we try to optimize the method by taking each point in every cluster and again trying to fit in the better cluster. 
 
 ## Explanation
 
@@ -28,8 +28,7 @@ Each cluster is an object with methods:
 
 ## Motivation
 
-* The reason behind implementing this has a solid background idea. The heart of that idea is clustering the graph. So I just wanted to implement it and try if I can cut it down.
-* I strongly believe "Its better to do well than to say well"
+* The reason behing implementing this is to test if we can use clustering on a graph and precompute the clusters. This way we can reduce the query times.
 * Ref: http://algo2.iti.kit.edu/documents/MaueSandersMatijevic2009.pdf
 
 
